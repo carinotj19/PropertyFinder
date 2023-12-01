@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "297650916259",
+    "project_id": "propertyfinder-1e6bf",
+    "storage_bucket": "propertyfinder-1e6bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297650916259:android:5adf9023fbedc84d7d6816",
+        "android_client_info": {
+          "package_name": "com.example.propertyfinderdashboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYitdXAOJ7_UuAtGLt1RSUl09zEYYIUgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
