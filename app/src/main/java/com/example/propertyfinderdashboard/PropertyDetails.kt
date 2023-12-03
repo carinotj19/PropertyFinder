@@ -2,12 +2,14 @@ package com.example.propertyfinderdashboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import com.squareup.picasso.Picasso
 
 
 class PropertyDetails : AppCompatActivity() {
@@ -53,7 +55,9 @@ class PropertyDetails : AppCompatActivity() {
     private fun initialize(){
         val price = intent.getDoubleExtra("PROPERTY_PRICING", 0.0)
         val pricing = "$price /per month"
-//        propertyImage.text =
+        val image = intent.getStringExtra("PROPERTY_IMAGE")
+        Picasso.get().load(image).into(propertyImage)
+
         propertyName.text = intent.getStringExtra("PROPERTY_NAME")
         propertyPricing.text = pricing
         propertyRating.text = intent.getDoubleExtra("PROPERTY_RATING", 0.0).toString()
@@ -65,7 +69,7 @@ class PropertyDetails : AppCompatActivity() {
         propertyDescription.text = intent.getStringExtra("PROPERTY_DESCRIPTION")
 
 
-        val isAvailable = intent.getBooleanExtra("PROPERTY_AVAILABILITY", false)
+        val isAvailable = intent.getBooleanExtra("PROPERTY_AVAILABILITY", true)
         if (!isAvailable){
             // Get the drawable from the TextView
             val drawable = propertyAvailability.compoundDrawablesRelative[0] // Change the index based on your drawable position
@@ -74,6 +78,8 @@ class PropertyDetails : AppCompatActivity() {
             // Apply the modified drawable back to the TextView
             propertyAvailability.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable, null, null, null)
             propertyAvailability.text = "Unavailable"
+        } else {
+            propertyAvailability.text = "Available"
         }
     }
 

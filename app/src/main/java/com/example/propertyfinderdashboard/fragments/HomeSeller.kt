@@ -237,6 +237,7 @@ class HomeSeller : Fragment(){
         }
     }
 
+
     companion object {
         private const val PICK_IMAGE_REQUEST_CODE = 1000
     }

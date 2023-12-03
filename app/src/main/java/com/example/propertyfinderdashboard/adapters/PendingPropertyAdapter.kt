@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso
 class PendingPropertyAdapter(private var items: List<PropertyModel>, private val itemClickListener: OnItemClickListener) :
     RecyclerView.Adapter<PendingPropertyAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+   inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val propertyImage: ImageView = itemView.findViewById(R.id.property_image)
         val propertyName: TextView = itemView.findViewById(R.id.property_name)
         val propertyLocation: TextView = itemView.findViewById(R.id.property_location)
@@ -21,6 +21,17 @@ class PendingPropertyAdapter(private var items: List<PropertyModel>, private val
 
         val trashButton: ImageView = itemView.findViewById(R.id.trash)
         val checkButton: ImageView = itemView.findViewById(R.id.check)
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+       override fun onClick(v: View?) {
+           val position = adapterPosition
+           if (position != RecyclerView.NO_POSITION){
+               itemClickListener.onItemClick(items[position])
+           }
+       }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -61,5 +72,7 @@ class PendingPropertyAdapter(private var items: List<PropertyModel>, private val
     interface OnItemClickListener {
         fun onDeleteButtonClick(item: PropertyModel)
         fun onCheckButtonClick(item: PropertyModel)
+        fun onItemClick(item: PropertyModel)
     }
+
 }

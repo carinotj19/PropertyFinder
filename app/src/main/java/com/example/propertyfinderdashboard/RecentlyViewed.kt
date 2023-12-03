@@ -51,15 +51,15 @@ class RecentlyViewed : AppCompatActivity(), PropertyAdapter.OnItemClickListener 
                 .limit(10) // Adjust the limit as needed
                 .get()
                 .addOnSuccessListener { result ->
-                    val propertyList = mutableListOf<PropertyModel>()
+                    this.propertyList = mutableListOf<PropertyModel>()
 
                     for (document in result) {
                         val property = document.toObject(PropertyModel::class.java)
-                        propertyList.add(property.copy(documentId = document.id))
+                        (propertyList as MutableList<PropertyModel>).add(property.copy(documentId = document.id))
                     }
 
                     // Update the adapter with the fetched data
-                    propertyAdapter.updateData(propertyList)
+                    propertyAdapter.updateData(this.propertyList)
                 }
                 .addOnFailureListener { exception ->
                     // Handle errors

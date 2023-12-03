@@ -15,13 +15,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.propertyfinderdashboard.PropertyDetails
 import com.example.propertyfinderdashboard.R
 import com.example.propertyfinderdashboard.adapters.PendingPropertyAdapter
-import com.example.propertyfinderdashboard.adapters.PropertyAdapter
 import com.example.propertyfinderdashboard.models.PropertyModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import io.github.serpro69.kfaker.Faker
+import kotlin.random.Random
 
-class HomeAdmin : Fragment(), PendingPropertyAdapter.OnItemClickListener, PropertyAdapter.OnItemClickListener {
+class HomeAdmin : Fragment(), PendingPropertyAdapter.OnItemClickListener {
     private lateinit var propertyList: List<PropertyModel>
     private lateinit var pendingPropertyAdapter: PendingPropertyAdapter
 
@@ -143,22 +144,23 @@ class HomeAdmin : Fragment(), PendingPropertyAdapter.OnItemClickListener, Proper
             }
     }
 
-    override fun onItemClick(position: Int) {
-        val clickedItem = propertyList[position]
-        addToRecentViewed(clickedItem)
+    override fun onItemClick(item: PropertyModel) {
+        addToRecentViewed(item)
 
-        val landmarks = "Near this barangay hall"
-        val ownerName = "Rayshing pogi"
-        val description = "Rayshing pogi"
-        val availability = false
+        val faker = Faker()
+
+        val landmark = faker.address.streetName()
+        val ownerName = faker.name.name()
+        val description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        val availability = Random.nextBoolean()
 
         val intent = Intent(requireContext(), PropertyDetails::class.java)
-        intent.putExtra("PROPERTY_IMAGE", clickedItem.propertyImage)
-        intent.putExtra("PROPERTY_NAME", clickedItem.propertyName)
-        intent.putExtra("PROPERTY_PRICING", clickedItem.price)
-        intent.putExtra("PROPERTY_RATING", clickedItem.rating)
-        intent.putExtra("PROPERTY_LOCATION", clickedItem.location)
-        intent.putExtra("PROPERTY_LANDMARKS", landmarks)
+        intent.putExtra("PROPERTY_IMAGE", item.propertyImage)
+        intent.putExtra("PROPERTY_NAME", item.propertyName)
+        intent.putExtra("PROPERTY_PRICING", item.price)
+        intent.putExtra("PROPERTY_RATING", item.rating)
+        intent.putExtra("PROPERTY_LOCATION", item.location)
+        intent.putExtra("PROPERTY_LANDMARKS", landmark)
         intent.putExtra("PROPERTY_OWNER_NAME", ownerName)
         intent.putExtra("PROPERTY_DESCRIPTION", description)
         intent.putExtra("PROPERTY_AVAILABILITY", availability)
