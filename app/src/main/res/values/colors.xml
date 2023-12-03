@@ -10,4 +10,6 @@
     <color name="lightestPurple">#cccceb</color>
     <color name="lightGrey">#818081</color>
     <color name="green">#0dd25e</color>
+    <color name="red">#F44336</color>
+    <color name="yellow">#FFEB3B</color>
 </resources>

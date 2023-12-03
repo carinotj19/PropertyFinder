@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/settings_notifications"
+        android:title="Notifications"
+        android:icon="@drawable/notifications_icon" />
+
+    <item
+        android:id="@+id/settings_recently_viewed"
+        android:title="Recently Viewed"
+        android:icon="@drawable/recent_viewed_icon" />
+
+    <item
+        android:id="@+id/settings_help"
+        android:title="Get Help"
+        android:icon="@drawable/help_icon" />
+
+    <item
+        android:id="@+id/settings_about"
+        android:title="About Us"
+        android:icon="@drawable/about_icon" />
+
+    <item
+        android:id="@+id/settings_sign_out"
+        android:title="Sign Out"
+        android:icon="@drawable/sign_out_icon" />
+</menu>

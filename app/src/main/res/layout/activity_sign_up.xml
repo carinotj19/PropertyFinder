@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".SignUp"
+    android:animateLayoutChanges="true"
     android:padding="16dp">
-
 
     <ImageView
         android:id="@+id/logo"
@@ -41,10 +41,23 @@
         android:textColor="@color/colorPurple"
         android:layout_marginTop="16dp"/>
 
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text=""
+        android:textColor="@color/red"
+        android:textSize="18sp"
+        android:visibility="gone"/>
+
     <!-- Full Name -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fullNameInputLayout"
-        android:layout_below="@id/welcome"
+        android:layout_below="@id/error_text"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,10 +88,27 @@
             android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Phone Number -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneNumberInputLayout"
+        android:layout_below="@id/emailInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumberEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="textEmailAddress"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <!-- Password -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
-        android:layout_below="@id/emailInputLayout"
+        android:layout_below="@id/phoneNumberInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -146,4 +176,12 @@
             android:fontFamily="@font/lato_regular"/>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_below="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 </RelativeLayout>

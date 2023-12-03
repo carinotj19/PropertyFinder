@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".Chat">
+
+    <RelativeLayout
+        android:background="@color/grey"
+        android:id="@+id/messages_recipient"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/back_icon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_centerVertical="true"
+            app:tint="@color/colorPurple" />
+
+        <TextView
+            android:id="@+id/recipient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Kevin"
+            android:textColor="@color/colorPurple"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_above="@id/messages_bottom_header"
+        android:id="@+id/message_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/messages_recipient">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:padding="20dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:background="@color/grey"
+        android:id="@+id/messages_bottom_header"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp">
+
+        <RelativeLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <ImageButton
+                android:paddingEnd="10dp"
+                android:layout_marginStart="30dp"
+                android:id="@+id/attach_file"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/attach_file_icon"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="@color/colorPurple"
+                android:layout_marginRight="10dp"
+                android:layout_centerVertical="true"/>
+
+            <EditText
+                android:layout_marginEnd="30dp"
+                android:paddingEnd="10dp"
+                android:layout_toEndOf="@id/attach_file"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/lato_regular"
+                android:background="@drawable/rounded_square"
+                android:drawableEnd="@drawable/send_icon"
+                android:drawableTint="@color/colorPurple"
+                android:paddingStart="10dp"
+                android:hint="Type a Message"
+                android:maxLines="1"
+                android:textSize="14sp"/>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

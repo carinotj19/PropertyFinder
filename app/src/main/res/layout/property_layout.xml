@@ -13,23 +13,26 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/propertyImage"
+            android:id="@+id/property_image"
             android:layout_width="104dp"
             android:layout_height="104dp"
-            android:src="@drawable/property1"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
-            android:layout_margin="8dp"/>
+            android:src="@drawable/property1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/propertyImage"
-            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@+id/property_image"
+            android:layout_marginStart="8dp"
             android:orientation="vertical"
             android:padding="8dp">
 
             <TextView
-                android:id="@+id/propertyName"
+                android:id="@+id/property_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Property Name"
@@ -40,14 +43,14 @@
             <TextView
                 android:fontFamily="@font/lato_light"
                 android:textSize="12sp"
-                android:id="@+id/propertyLocation"
+                android:id="@+id/property_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location"
                 android:layout_marginBottom="8dp" />
 
             <TextView
-                android:id="@+id/propertyPrice"
+                android:id="@+id/property_price"
                 android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,9 +74,9 @@
 
                     android:fontFamily="@font/lato_light"
                     android:text="Location Details"
-                    android:drawableStart="@drawable/location_icon"
                     android:drawablePadding="4dp"
-                    android:paddingEnd="20dp"/>
+                    android:paddingEnd="20dp"
+                    app:drawableStartCompat="@drawable/location_icon" />
 
                 <TextView
                     android:id="@+id/extraTextView2"
@@ -82,8 +85,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_light"
                     android:text="Availability"
-                    android:drawableStart="@drawable/available_icon"
-                    android:drawablePadding="4dp"/>
+                    android:drawablePadding="4dp"
+                    app:drawableStartCompat="@drawable/available_icon" />
             </LinearLayout>
 
         </LinearLayout>
@@ -106,6 +109,7 @@
                 android:contentDescription="Star Icon"/>
 
             <TextView
+                android:id="@+id/property_rating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="4.7"

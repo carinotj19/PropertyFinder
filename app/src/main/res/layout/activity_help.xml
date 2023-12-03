@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".Help">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help"
+            android:fontFamily="@font/lato_bold"
+            android:textStyle="bold"
+            android:textColor="@color/colorPurple"
+            android:textSize="32sp"
+            android:layout_marginStart="12dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/back_button" />
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/back_icon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_centerVertical="true"
+            app:tint="@color/colorPurple" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_below="@id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- App Logo -->
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/search_icon"
+            android:layout_gravity="center"
+            app:tint="@color/colorPurple" />
+
+        <!-- App Name -->
+        <TextView
+            android:id="@+id/appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Property Finder"
+            android:textSize="18sp"
+            android:textColor="@color/colorPurple"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <!-- Get Help Button -->
+    <Button
+        android:id="@+id/getHelpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/headerLayout"
+        android:layout_marginTop="24dp"
+        android:text="Get Help"
+        android:textSize="18sp" />
+
+
+    <!-- Help Center Section -->
+    <ScrollView
+        android:id="@+id/helpCenterScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/getHelpButton"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- FAQ Section -->
+            <TextView
+                android:id="@+id/faqSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Frequently Asked Questions"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <!-- List of FAQs -->
+            <LinearLayout
+                android:id="@+id/faqList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Sample FAQ Items -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewFAQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"/>
+
+
+            </LinearLayout>
+
+            <!-- Contact Information Section -->
+            <TextView
+                android:id="@+id/contactSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Contact Information"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Contact Information Details -->
+            <TextView
+                android:id="@+id/contactDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email: support@example.com\nPhone: +1 (123) 456-7890"
+                android:textSize="16sp" />
+
+            <!-- Submission Form -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/issueEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Describe your issue"
+                android:inputType="textMultiLine"
+                android:minLines="3"
+                android:gravity="top" />
+
+            <Button
+                android:id="@+id/submitIssueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Submit"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

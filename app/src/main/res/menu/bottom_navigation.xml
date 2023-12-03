@@ -9,10 +9,6 @@
         android:title="Search"
         android:icon="@drawable/search_icon" />
     <item
-        android:id="@+id/navigation_settings"
-        android:title="Settings"
-        android:icon="@drawable/settings_icon" />
-    <item
         android:id="@+id/navigation_messages"
         android:title="Messages"
         android:icon="@drawable/messages_icon" />
@@ -20,4 +16,8 @@
         android:id="@+id/navigation_account"
         android:title="Account"
         android:icon="@drawable/account_icon" />
+    <item
+        android:id="@+id/navigation_settings"
+        android:title="Settings"
+        android:icon="@drawable/settings_icon" />
 </menu>

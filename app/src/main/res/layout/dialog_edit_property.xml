@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    android:padding="16dp"
+    android:background="@drawable/rounded_background">
+
+    <ImageView
+        android:id="@+id/imageViewProperty"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/property1"
+        android:padding="20dp"/>
+
+    <!-- Add a button to pick a new image -->
+    <Button
+        android:id="@+id/btnPickImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Pick Image"
+        android:layout_margin="10dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Property Name"
+        android:inputType="text"
+        android:layout_margin="10dp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:inputType="text"
+        android:layout_margin="10dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price"
+        android:inputType="numberDecimal"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/red"
+        android:fontFamily="@font/lato_regular"
+        android:text=""
+        android:visibility="gone"/>
+
+</LinearLayout>

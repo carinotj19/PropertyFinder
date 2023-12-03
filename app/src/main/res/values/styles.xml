@@ -4,4 +4,16 @@
         <item name="android:layout_marginStart">8dp</item>
         <item name="android:layout_marginEnd">8dp</item>
     </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
+        <!-- Customize the SearchView text size and hint -->
+        <item name="android:textSize">14sp</item>
+        <item name="android:queryHint">Enter an address, neighborhood, or city</item>
+
+        <!-- Remove the underline -->
+        <item name="queryBackground">@android:color/transparent</item>
+
+        <!-- Customize the SearchView icon -->
+        <item name="searchIcon">@drawable/search_icon</item>
+    </style>
 </resources>
