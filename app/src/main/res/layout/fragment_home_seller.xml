@@ -15,86 +15,46 @@
         android:background="@drawable/bg_view"
         />
 
-    <TextView
-        android:id="@+id/app_name"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Property Finder"
-        android:textColor="@color/white"
-        android:textSize="36sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/relative_layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/app_name"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="30dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:background="@drawable/rounded_square" />
-
-        <LinearLayout
-            android:layout_width="300dp"
+        <RelativeLayout
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp">
-
-            <LinearLayout
+            android:layout_weight="2">
+            <TextView
+                android:id="@+id/app_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:boxBackgroundMode="none"
-                    app:endIconMode="clear_text"
-                    android:textColorHint="#808080">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/editTextSearch"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@color/grey"
-                        android:drawableStart="@drawable/location_icon"
-                        android:drawablePadding="8dp"
-                        android:hint="Enter an address, neighborhood, or city"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textSize="12sp" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:textSize="12sp"
-                    android:text="Search Now"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/purple_slight_round_button"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="75dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/slogan"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="12sp"
-                android:text="Advanced Search"
-                android:layout_gravity="end"/>
-        </LinearLayout>
-    </RelativeLayout>
+                android:gravity="start"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:layout_below="@id/app_name"
+                android:text="Find the best property for you"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <ImageView
+            android:layout_marginTop="75dp"
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:src="@drawable/search"/>
+    </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -115,7 +75,7 @@
         app:tabIndicatorGravity="center"
         app:tabSelectedTextColor="@color/colorPurple"
         app:tabTextColor="@color/darkerGrey"
-        android:layout_below="@id/relative_layout1"/>
+        android:layout_below="@id/top_view"/>
 
     <LinearLayout
         android:id="@+id/linear_layout1"

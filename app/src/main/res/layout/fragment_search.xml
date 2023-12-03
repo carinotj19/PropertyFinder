@@ -16,9 +16,10 @@
         android:background="@drawable/rounded_square" />
 
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/search_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="visible">
 
             <!-- Container for Recent Searches -->
             <LinearLayout
@@ -44,12 +45,19 @@
             </LinearLayout>
     </FrameLayout>
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
     <!-- Container for Search Results -->
-    <LinearLayout
-        android:id="@+id/search_results_layout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_results_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
-    </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:visibility="gone"/>
 </LinearLayout>

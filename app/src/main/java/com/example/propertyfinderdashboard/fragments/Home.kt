@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -28,7 +27,8 @@ import kotlin.random.Random
 class Home : Fragment(), PropertyAdapter.OnItemClickListener {
     private lateinit var propertyAdapter: PropertyAdapter
     private lateinit var propertyList: List<PropertyModel>
-    private lateinit var searchView: SearchView
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -44,7 +44,7 @@ class Home : Fragment(), PropertyAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.propertyRecyclerView)
+        recyclerView = view.findViewById(R.id.propertyRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         propertyAdapter = PropertyAdapter(emptyList(), this) // Initialize adapter with empty list
         recyclerView.adapter = propertyAdapter
@@ -52,37 +52,10 @@ class Home : Fragment(), PropertyAdapter.OnItemClickListener {
         val totalCountTextView: TextView = view.findViewById(R.id.results)
         getTotalItemCount(totalCountTextView)
 
-        searchView = view.findViewById(R.id.searchView)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                // Handle search query submission
-                if (!query.isNullOrBlank() && !query.equals(lastQuery, ignoreCase = true)) {
-                    // Add the search query to recent searches
-                    addRecentSearch(query)
-                    lastQuery = query
-                }
-                // Implement logic to show search results as needed
-                switchToSearchResults(query)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Switch to search results when the user starts typing
-                switchToSearchResults(newText)
-                return true
-            }
-        })
 
         // Fetch data from Firestore
         fetchPropertyData()
     }
-
-    private fun switchToRecentAndTopSearches() {
-        recentSearchesLayout.visibility = View.VISIBLE
-        searchResultsLayout.visibility = View.GONE
-        topSearchesLayout.visibility = View.VISIBLE
-    }
-
     override fun onItemClick(position: Int) {
         val clickedItem = propertyList[position]
         addToRecentViewed(clickedItem)
@@ -150,7 +123,7 @@ class Home : Fragment(), PropertyAdapter.OnItemClickListener {
                 textView.text = "$totalCount Results"
             }
             .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting total item count.", exception)
+                Log.w(TAG, "Error getting total item count.", exception)
                 Toast.makeText(requireContext(), "Error fetching total item count", Toast.LENGTH_SHORT).show()
             }
     }
