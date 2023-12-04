@@ -80,6 +80,9 @@ class Account : Fragment() {
 
         editProfile = view.findViewById(R.id.edit_btn)
 
+        callMeBtn = view.findViewById(R.id.call_me_btn)
+        messageMeBtn = view.findViewById(R.id.message_me_btn)
+
         if (user != null) {
             val userId = user.uid
             val userDocRef = firestore.collection("Users").document(userId)
