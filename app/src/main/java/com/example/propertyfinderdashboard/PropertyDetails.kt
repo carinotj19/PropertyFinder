@@ -1,14 +1,19 @@
 package com.example.propertyfinderdashboard
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import com.google.android.material.textfield.TextInputEditText
 import com.squareup.picasso.Picasso
 
 
@@ -24,6 +29,7 @@ class PropertyDetails : AppCompatActivity() {
     private lateinit var propertyDescription: TextView
     private lateinit var propertyAvailability: TextView
     private lateinit var backBtn: ImageButton
+    private lateinit var contactUsBtn: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_property_details)
@@ -44,12 +50,41 @@ class PropertyDetails : AppCompatActivity() {
         backBtn = findViewById(R.id.back_button)
         backBtn.setOnClickListener {
             val intent = Intent(this, Dashboard::class.java)
-            intent.putExtra("fragment", "Settings")
+            intent.putExtra("fragment", "Home")
             setResult(RESULT_OK, intent)
             finish()
         }
 
+        contactUsBtn = findViewById(R.id.contact_us)
+        contactUsBtn.setOnClickListener {
+            showEmailDialog()
+        }
+
         initialize()
+    }
+
+    private fun showEmailDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_send_booking, null)
+        val emailEditText: TextInputEditText = dialogView.findViewById(R.id.emailEditText)
+        val messageEditText: TextInputEditText = dialogView.findViewById(R.id.messageEditText)
+        val fullNameEditText: TextInputEditText = dialogView.findViewById(R.id.fullNameEditText)
+
+        AlertDialog.Builder(this)
+            .setTitle("Send Email")
+            .setView(dialogView)
+            .setPositiveButton("Send") { dialog, _ ->
+
+                val emailAddress = emailEditText.text.toString()
+
+                Toast.makeText(this, "Booking sent successfully", Toast.LENGTH_SHORT).show()
+
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                // Dismiss the dialog
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun initialize(){

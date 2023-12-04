@@ -1,38 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="325dp"
     android:orientation="vertical"
     android:animateLayoutChanges="true"
     android:clipToPadding="true"
     android:padding="16dp"
     android:background="@drawable/rounded_background">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!-- Add an ImageView for displaying the current property image -->
-        <ImageView
-            android:id="@+id/imageViewProperty"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/property1"/>
-
-        <!-- Add a button to pick a new image -->
-        <ImageButton
-            android:id="@+id/btnPickImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/edit_icon"
-            android:padding="10dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/purple_button_background"
-            app:tint="@color/white" />
-
-    </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextLayout"
@@ -42,48 +16,47 @@
         android:layout_marginTop="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextName"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:inputType="text"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:layout_margin="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextLocationLayout"
+        android:id="@+id/fullNameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextLocation"
+            android:id="@+id/fullNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Location"
-            android:inputType="text"
+            android:hint="Full Name"
+            android:inputType="textEmailAddress"
             android:layout_margin="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"/>
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/editTextPriceLayout"
+        android:id="@+id/messageEditTextLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextPrice"
+            android:id="@+id/messageEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Price"
-            android:inputType="numberDecimal"
+            android:hint="Message"
+            android:inputType="text"
             android:layout_margin="10dp"
             android:focusable="true"
             android:focusableInTouchMode="true"/>

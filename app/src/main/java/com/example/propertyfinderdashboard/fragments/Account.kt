@@ -1,6 +1,8 @@
 package com.example.propertyfinderdashboard.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,10 +12,12 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import androidx.cardview.widget.CardView
 import com.example.propertyfinderdashboard.EditProfile
 import com.example.propertyfinderdashboard.Login
 import com.example.propertyfinderdashboard.R
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -38,6 +42,9 @@ class Account : Fragment() {
 
     private lateinit var profilePicture: CircleImageView
     private lateinit var editProfile: ImageButton
+
+    private lateinit var callMeBtn: AppCompatButton
+    private lateinit var messageMeBtn: AppCompatButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,6 +125,52 @@ class Account : Fragment() {
             passUserData()
         }
 
+        callMeBtn.setOnClickListener {
+            val phoneNumber = profilePhoneNumber.text
+            val dialIntent = Intent(Intent.ACTION_DIAL)
+            dialIntent.data = Uri.parse("tel:$phoneNumber")
+            startActivity(dialIntent)
+        }
+
+        messageMeBtn.setOnClickListener {
+            val emailAddress = profileEmail.text // Replace with the actual email address
+            val name = profileFullName.text // Replace with the actual email address
+            val subject = "Emailing $profileFullName" // Replace with the desired subject
+
+            val emailIntent = Intent(Intent.ACTION_SENDTO)
+            emailIntent.data = Uri.parse("mailto:$emailAddress")
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
+
+            if (emailIntent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(emailIntent)
+            } else {
+                // Handle the case where no email app is available
+                Toast.makeText(requireContext(), "No email app found", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showEmailDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_send_email, null)
+        val emailEditText: TextInputEditText = dialogView.findViewById(R.id.emailEditText)
+        val messageEditText: TextInputEditText = dialogView.findViewById(R.id.messageEditText)
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Send Email")
+            .setView(dialogView)
+            .setPositiveButton("Send") { dialog, _ ->
+
+                val emailAddress = emailEditText.text.toString()
+
+                Toast.makeText(requireContext(), "Email sent to $emailAddress", Toast.LENGTH_SHORT).show()
+
+                dialog.dismiss()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                // Dismiss the dialog
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun passUserData() {
