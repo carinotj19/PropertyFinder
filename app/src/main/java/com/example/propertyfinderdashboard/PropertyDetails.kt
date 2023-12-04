@@ -52,6 +52,7 @@ class PropertyDetails : AppCompatActivity() {
             val intent = Intent(this, Dashboard::class.java)
             intent.putExtra("fragment", "Home")
             setResult(RESULT_OK, intent)
+            startActivity(intent)
             finish()
         }
 

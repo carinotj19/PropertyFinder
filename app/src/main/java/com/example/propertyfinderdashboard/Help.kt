@@ -38,6 +38,7 @@ class Help : AppCompatActivity() {
             val intent = Intent(this, Dashboard::class.java)
             intent.putExtra("fragment", "Settings")
             setResult(RESULT_OK, intent)
+            startActivity(intent)
             finish()
         }
 

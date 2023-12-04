@@ -68,6 +68,7 @@ class EditProfile : AppCompatActivity() {
             val intent = Intent(this, Dashboard::class.java)
             intent.putExtra("fragment", "Account")
             setResult(RESULT_OK, intent)
+            startActivity(intent)
             finish()
         }
 
@@ -101,6 +102,7 @@ class EditProfile : AppCompatActivity() {
                 intent.putExtra("fragment", "Home")
                 setResult(RESULT_OK, intent)
                 Toast.makeText(this@EditProfile, "Profile Updated", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
                 finish()
             }
         }
