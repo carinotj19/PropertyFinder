@@ -106,7 +106,7 @@ class HomeSeller : Fragment(){
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_add_property, null)
 
         imageViewProperty = dialogView.findViewById(R.id.imageViewProperty)
-        val btnPickImage: Button = dialogView.findViewById(R.id.btnPickImage)
+        val btnPickImage: ImageButton = dialogView.findViewById(R.id.btnPickImage)
         val editTextName: TextInputEditText = dialogView.findViewById(R.id.editTextName)
         val editTextLocation: TextInputEditText = dialogView.findViewById(R.id.editTextLocation)
         val editTextPrice: TextInputEditText = dialogView.findViewById(R.id.editTextPrice)

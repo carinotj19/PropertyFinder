@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -123,7 +124,7 @@ class ApprovedPropertySeller : Fragment(), PendingPropertyAdapterSeller.OnClickL
             .inflate(R.layout.dialog_edit_property, null)
 
         imageViewProperty = dialogView.findViewById(R.id.imageViewProperty)
-        val btnPickImage: Button = dialogView.findViewById(R.id.btnPickImage)
+        val btnPickImage: ImageButton = dialogView.findViewById(R.id.btnPickImage)
         val editTextName: TextInputEditText = dialogView.findViewById(R.id.editTextName)
         val editTextLocation: TextInputEditText = dialogView.findViewById(R.id.editTextLocation)
         val editTextPrice: TextInputEditText = dialogView.findViewById(R.id.editTextPrice)
