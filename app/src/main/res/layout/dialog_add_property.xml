@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/property1"/>
+            android:src="@drawable/placeholder_image"/>
 
         <!-- Add a button to pick a new image -->
         <ImageButton

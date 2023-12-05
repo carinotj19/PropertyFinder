@@ -41,7 +41,7 @@ class HomeSeller : Fragment(){
     private lateinit var newName: String
     private lateinit var newLocation: String
     private lateinit var newPrice: String
-    private lateinit var newImageUrl: String
+    private var newImageUrl: String = "https://firebasestorage.googleapis.com/v0/b/propertyfinder-1e6bf.appspot.com/o/property1.png?alt=media&token=21dc75c4-659f-4161-80f3-f055ca308b20"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -123,25 +123,36 @@ class HomeSeller : Fragment(){
             .setTitle("Add Property")
             .setView(dialogView)
             .setPositiveButton("Save") { dialog, _ ->
+                Log.d("DIALOG", "I running")
                 // Get input values
                 newName = editTextName.text.toString()
                 newLocation = editTextLocation.text.toString()
                 newPrice = editTextPrice.text.toString()
 
-                // Check if a new image is picked
-                if (newImageUrl.isNotEmpty()) {
-                    savePropertyToFirebase()
-                } else {
-                    errorText.visibility = View.VISIBLE
-                    errorText.text = "Requires an image!"
+                Log.d("DIALOG", "${newName}, ${newLocation}, $newPrice")
+                // Validate input fields
+                if (validateInputFields()) {
+                    // Check if a new image is picked
+                    if (newImageUrl.isNotEmpty()) {
+                        savePropertyToFirebase()
+                        dialog.dismiss()
+                    }
                 }
-
-                dialog.dismiss()
             }
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
+    }
+
+    private fun validateInputFields(): Boolean {
+        if (newName.isEmpty() || newLocation.isEmpty() || newPrice.isEmpty()) {
+            errorText.visibility = View.VISIBLE
+            errorText.text = "All fields are required!"
+            return false
+        }
+
+        return true
     }
 
     private fun savePropertyToFirebase() {
@@ -210,7 +221,6 @@ class HomeSeller : Fragment(){
             if (selectedImageUri != null) {
                 // Generate a unique filename for the image
                 val filename = UUID.randomUUID().toString()
-
                 // Get a reference to the Firebase Storage location
                 val storageRef: StorageReference = FirebaseStorage.getInstance().getReference("/images/$filename")
 
@@ -228,11 +238,13 @@ class HomeSeller : Fragment(){
                         // Handle failure if needed
                         Toast.makeText(requireContext(), "Error uploading image", Toast.LENGTH_SHORT).show()
                         errorText.visibility = View.VISIBLE
-                        errorText.text = "Error uploading image"
+                        errorText.text = "Error uploading image: ${it.message}"
                     }
 
                 errorText.visibility = View.GONE
                 errorText.text = ""
+            } else {
+                Toast.makeText(requireContext(), "Using default Image", Toast.LENGTH_SHORT).show()
             }
         }
     }

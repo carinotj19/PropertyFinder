@@ -50,6 +50,8 @@ class Search : Fragment(), PropertyAdapter.OnItemClickListener  {
     private lateinit var propertyAdapter: PropertyAdapter
     private lateinit var propertyList: List<PropertyModel>
 
+    private lateinit var noResultErrorText: TextView
+
     private var lastQuery: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,6 +64,7 @@ class Search : Fragment(), PropertyAdapter.OnItemClickListener  {
         resultsRecyclerView = view.findViewById(R.id.search_results_recycler_view)
         searchView = view.findViewById(R.id.searchView)
         progressBar = view.findViewById(R.id.progress_bar)
+        noResultErrorText = view.findViewById(R.id.no_result_text)
 
         // Load recent searches from SharedPreferences using SharedPreferencesHelper
         loadRecentSearches()
@@ -208,20 +211,12 @@ class Search : Fragment(), PropertyAdapter.OnItemClickListener  {
                     // Update the RecyclerView with the search results
                     propertyAdapter.updateData(propertyList)
 
-                    // Show searchResultsLayout and hide recentSearchesLayout
                     resultsRecyclerView.visibility = View.VISIBLE
                     recentSearchesLayout.visibility = View.GONE
+                    noResultErrorText.visibility = View.GONE
                 } else {
-                    // If no results found, show a message
-                    val noResultsTextView = TextView(context)
-                    noResultsTextView.text = "No results found."
-                    noResultsTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
-                    noResultsTextView.setPadding(16, 16, 16, 16)
-
-                    resultsRecyclerView.addView(noResultsTextView)
-
-                    // Show searchResultsLayout and hide recentSearchesLayout
-                    resultsRecyclerView.visibility = View.VISIBLE
+                    noResultErrorText.visibility = View.VISIBLE
+                    recentSearchesLayout.visibility = View.GONE
                     recentSearchesLayout.visibility = View.GONE
                 }
             } else {
@@ -229,7 +224,18 @@ class Search : Fragment(), PropertyAdapter.OnItemClickListener  {
                 val exception = task.exception
                 // Log or show an error message
                 Log.e("Firebase Query", "Error: $exception")
+                Toast.makeText(requireActivity(), "Something went wrong", Toast.LENGTH_SHORT).show()
+
+                noResultErrorText.visibility = View.VISIBLE
+                noResultErrorText.text = "Something went wrong"
+                // Show searchResultsLayout and hide recentSearchesLayout
+                recentSearchesLayout.visibility = View.GONE
+                recentSearchesLayout.visibility = View.GONE
             }
+
+            noResultErrorText.visibility = View.GONE
+            recentSearchesLayout.visibility = View.GONE
+            recentSearchesLayout.visibility = View.VISIBLE
         }
     }
 
