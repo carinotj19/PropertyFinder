@@ -1,20 +1,39 @@
-Made by TJ Cariño
-Commissioned by: (Anonymous Name)
-
 # PropertyFinder
 
-PropertyFinder is an intuitive mobile application developed using Android Studio and Kotlin. It serves as a comprehensive solution for individuals searching for temporary accommodation in Baguio City and La Trinidad.
+PropertyFinder is a mobile application developed using Android Studio and Kotlin. It serves as a solution for individuals searching for temporary accommodations in Baguio City and La Trinidad.
 
-## Features
+## 📱 Features
 
-- **Messaging**: Seamlessly communicate with property owners or agents.
-- **Simplified Payment**: Streamlined payment processing for hassle-free transactions.
-- **Easy Access to Properties**: Conveniently browse and access property listings.
+- **Messaging**: Communicate with property owners or agents.
+- **Simplified Payment**: Streamlined payment processing for transactions.
+- **Easy Access to Properties**: Browse and access property listings.
 
-## Usage
+## 🚀 Getting Started
 
-To use PropertyFinder, follow these steps:
+### Prerequisites
 
-1. Clone the repository to your local machine.
-2. Open the project in Android Studio.
-3. Build and run the application on your Android device or emulator.
+- Android Studio installed on your machine.
+- An Android device or emulator for testing.
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/carinotj19/PropertyFinder.git
+   ```
+
+2. **Open the project in Android Studio:**
+
+   - Launch Android Studio.
+   - Click on "Open an existing project".
+   - Navigate to the cloned repository's directory and select it.
+
+3. **Build and run the application:**
+
+   - Connect your Android device or start an emulator.
+   - Click on the "Run" button in Android Studio.
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
